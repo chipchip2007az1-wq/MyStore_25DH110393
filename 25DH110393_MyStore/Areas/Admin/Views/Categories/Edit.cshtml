@@ -18,11 +18,11 @@
         @Html.HiddenFor(model => model.CategoryID)
 
     </div>
-}
+
 
 @*NHúng PartialView vào form cha*@
 @Html.Partial("PVCreateEditCategory", Model)
-
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
