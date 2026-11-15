@@ -68,7 +68,7 @@
     </table>
     <!--Hiển thị phân trang-->
     <div class="pagination-container">
-        @Html.PagedListPager(Model.Products, page => Url.Action("Index", new {page ,searchTerm = Model.SearchTerm,minPrice = Model.MinPrice, maxPrice = Model.MaxPrice,sortOrder = Model.SortOrder}))
+        @Html.PagedListPager(Model.Products, page => Url.Action("Index", new { page, searchTerm = Model.SearchTerm,    minPrice = Model.MinPrice,   maxPrice = Model.MaxPrice,sortOrder = Model.SortOrder}))
         </div>
 }
 else

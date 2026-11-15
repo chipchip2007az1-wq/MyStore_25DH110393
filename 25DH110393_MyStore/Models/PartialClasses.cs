@@ -7,5 +7,6 @@ namespace _25DH110393_MyStore.Models
 {
     public class PartialClasses
     {
+
     }
 }
