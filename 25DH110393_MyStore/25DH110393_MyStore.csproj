@@ -136,11 +136,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CartController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,9 +187,13 @@
     <Compile Include="Models\VỉewModel\Cart.cs" />
     <Compile Include="Models\VỉewModel\CartItem.cs" />
     <Compile Include="Models\VỉewModel\CartService.cs" />
+    <Compile Include="Models\VỉewModel\CheckoutVM.cs" />
     <Compile Include="Models\VỉewModel\HomeProductVM.cs" />
+    <Compile Include="Models\VỉewModel\LoginVM.cs" />
+    <Compile Include="Models\VỉewModel\PersonalMenu.cs" />
     <Compile Include="Models\VỉewModel\ProductDetailsVM.cs" />
     <Compile Include="Models\VỉewModel\ProductSearchVM.cs" />
+    <Compile Include="Models\VỉewModel\RegisterVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +290,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Order\OrderSuccess.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
