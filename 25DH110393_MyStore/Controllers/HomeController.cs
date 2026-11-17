@@ -58,7 +58,7 @@ namespace _25DH110393_MyStore.Controllers
             int pageNumber = page ?? 1;
             int pageSize = model.PageSize;  // Số sản phẩm mỗi trang
             model.product = pro;
-            products.OrderBy(p => p.ProductID).Take(8).ToPagedList(pageNumber, pageSize);
+            model.RelatedProducts = products.OrderBy(p => p.ProductID).Take(8).ToList();
             model.TopProducts = products.OrderByDescending(p => p.OrderDetails.Count()).Take(8).ToPagedList(pageNumber, pageSize);
 
             if (quantity.HasValue)

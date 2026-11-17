@@ -1,0 +1,27 @@
+﻿﻿@model _25DH110393_MyStore.Models.VỉewModel.LoginVM
+@{
+    ViewBag.Title = "Đăng nhập quản trị";
+    Layout = "~/Areas/admin/Views/Shared/_adminLayout.cshtml";
+}
+
+<div style="max-width:420px; margin:40px auto;">
+    <h2 class="admin-title">Đăng nhập quản trị</h2>
+
+    @using (Html.BeginForm("Login", "AdminAccount", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", autofocus = "autofocus" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+        <button type="submit" class="btn btn-success" style="width:100%;">Đăng nhập</button>
+    }
+</div>

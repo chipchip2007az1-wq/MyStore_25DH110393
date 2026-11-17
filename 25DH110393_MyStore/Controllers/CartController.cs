@@ -1,5 +1,6 @@
 ﻿using _25DH110393_MyStore.Models;
-using _25DH110393_MyStore.Models.ViewModel;
+using _25DH110393_MyStore.Models.VỉewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,18 @@ namespace _25DH110393_MyStore.Areas.Admin.Controllers
         }
 
         // Hiển thị giỏ hàng không gom nhóm theo danh mục
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var cart = GetCartService().GetCart();
+            var products = db.Products.ToList();
+            var similarProducts = new List<Product>();
+            if (cart.Items != null && cart.Items.Any())
+            {
+                similarProducts = products.Where(p => cart.Items.Any(ci => ci.Category == p.Category.CategoryName) && !cart.Items.Any(ci=>ci.ProductID == p.ProductID)).ToList();
+            }
+            int pageNumber = page ?? 1;
+            int pageSize = cart.PageSize;
+            cart.SimilarProducts = similarProducts.OrderBy(p => p.ProductID).ToPagedList(pageNumber, pageSize);
             return View(cart);
         }
 

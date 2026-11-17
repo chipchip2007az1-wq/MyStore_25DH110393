@@ -136,6 +136,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -184,16 +185,20 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>MyStoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VỉewModel\Cart.cs" />
-    <Compile Include="Models\VỉewModel\CartItem.cs" />
-    <Compile Include="Models\VỉewModel\CartService.cs" />
-    <Compile Include="Models\VỉewModel\CheckoutVM.cs" />
-    <Compile Include="Models\VỉewModel\HomeProductVM.cs" />
-    <Compile Include="Models\VỉewModel\LoginVM.cs" />
-    <Compile Include="Models\VỉewModel\PersonalMenu.cs" />
-    <Compile Include="Models\VỉewModel\ProductDetailsVM.cs" />
-    <Compile Include="Models\VỉewModel\ProductSearchVM.cs" />
-    <Compile Include="Models\VỉewModel\RegisterVM.cs" />
+    <Compile Include="Models\Vỉewmodel\Cart.cs" />
+    <Compile Include="Models\Vỉewmodel\CartItem.cs" />
+    <Compile Include="Models\Vỉewmodel\CartService.cs" />
+    <Compile Include="Models\Vỉewmodel\ChangePasswordVM.cs" />
+    <Compile Include="Models\Vỉewmodel\CheckoutVM.cs" />
+    <Compile Include="Models\Vỉewmodel\HomeProductVM.cs" />
+    <Compile Include="Models\Vỉewmodel\LoginVM.cs" />
+    <Compile Include="Models\Vỉewmodel\MyOrderVM.cs" />
+    <Compile Include="Models\Vỉewmodel\PersonalMenu.cs" />
+    <Compile Include="Models\Vỉewmodel\ProductDetailsVM.cs" />
+    <Compile Include="Models\Vỉewmodel\ProfileInfoVM.cs" />
+    <Compile Include="Models\Vỉewmodel\ProductSearchVM.cs" />
+    <Compile Include="Models\Vỉewmodel\ProfileVM.cs" />
+    <Compile Include="Models\Vỉewmodel\RegisterVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,12 +264,13 @@
     <Content Include="Areas\Admin\Views\Products\PVCreateEditProduct.cshtml" />
     <Content Include="Areas\Admin\Views\Products\PVProductInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Products\PVListProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\_PVFeatureProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\_PVNewProduct.cshtml" />
+    <Content Include="Views\Home\_PVFeatureProduct.cshtml" />
+    <Content Include="Views\Home\_PVNewProduct.cshtml" />
     <Content Include="Views\Home\ProductDetails.cshtml" />
-    <Content Include="Views\Home\PVTopProduct.cshtml" />
-    <Content Include="Views\Home\PVRelatedProduct.cshtml" />
-    <Content Include="Areas\Admin\Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\_PVTopProduct.cshtml" />
+    <Content Include="Views\Home\_PVRelatedProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAccount\Login.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -295,6 +301,11 @@
     <Content Include="Views\Order\Checkout.cshtml" />
     <Content Include="Views\Order\OrderSuccess.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\_PVSimilarProducts.cshtml" />
+    <Content Include="Views\Order\MyOrder.cshtml" />
+    <Content Include="Views\Account\ProfileInfo.cshtml" />
+    <Content Include="Views\Cart\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

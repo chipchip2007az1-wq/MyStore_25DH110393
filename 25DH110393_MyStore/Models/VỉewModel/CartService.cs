@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace _25DH110393_MyStore.Models.ViewModel
+namespace _25DH110393_MyStore.Models.VỉewModel
 {
     public class CartService
     {

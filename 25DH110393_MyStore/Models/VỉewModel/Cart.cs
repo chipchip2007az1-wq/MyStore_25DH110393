@@ -5,13 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 
-namespace _25DH110393_MyStore.Models.ViewModel
+namespace _25DH110393_MyStore.Models.VỉewModel
 {
     public class Cart
     {
         private List<CartItem> items = new List<CartItem>();
 
         public IEnumerable<CartItem> Items => items;
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; } = 6;
+        public List<IGrouping<string, CartItem>> GroupedItems => items.GroupBy(i => i.Category).ToList();
+        public PagedList.IPagedList<Product> SimilarProducts {  get; set; }
 
         // Thêm sản phẩm vào giỏ
         public void AddItem(int productId, string productImage, string productName,
