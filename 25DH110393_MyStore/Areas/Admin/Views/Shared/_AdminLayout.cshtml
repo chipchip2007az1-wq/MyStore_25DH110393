@@ -3,11 +3,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Admin</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/mystylecss/LogoFASTOR.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "Admin" })">
+                    <span class="logo-fastor">FASTOR</span>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("HomeAdmin", "Index", "Home", new { area = "Admin" }, null)</li>
+                    <li>@Html.ActionLink("Đơn hàng", "Index", "Orders", new { area = "Admin" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
             @Html.ActionLink("My Store", "Index", "Admin/Home", new { area = "" }, new { @class = "navbar-brand" })

@@ -227,6 +227,7 @@
     <Content Include="Content\Images\ImageO.jpg" />
     <Content Include="Content\mystylecss\CustomerDetailProduct.css" />
     <Content Include="Content\mystylecss\CustomerHome.css" />
+    <Content Include="Content\mystylecss\LogoFASTOR.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
