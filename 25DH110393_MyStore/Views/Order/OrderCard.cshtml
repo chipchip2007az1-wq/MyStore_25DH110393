@@ -1,0 +1,50 @@
+﻿﻿@model _25DH110393_MyStore.Models.Order
+@using _25DH110393_MyStore.Models.VỉewModel
+@{
+    // Màu nhãn trạng thái
+    string color = Model.OrderStatus == MyOrderVM.DA_GIAO ? "#28a745"
+                 : Model.OrderStatus == MyOrderVM.DA_HUY ? "#6c757d"
+                 : Model.OrderStatus == MyOrderVM.DANG_VAN_CHUYEN ? "#17a2b8"
+                 : Model.OrderStatus == MyOrderVM.CHO_THANH_TOAN ? "#fd7e14"
+                 : "#007bff";
+    bool canCancel = Model.OrderStatus == MyOrderVM.CHO_THANH_TOAN
+                  || Model.OrderStatus == MyOrderVM.DANG_XU_LY;
+}
+
+<div class="order-card">
+    <div class="order-head">
+        <span><strong>Đơn hàng #@Model.OrderID</strong> &middot; @Model.OrderDate.ToString("dd/MM/yyyy")</span>
+        <span class="order-status" style="background:@color">@Model.OrderStatus</span>
+    </div>
+
+    @foreach (var d in Model.OrderDetails)
+    {
+        string img = (d.Product != null && !string.IsNullOrEmpty(d.Product.ProductImage))
+                     ? d.Product.ProductImage : "~/Content/images/default_img.png";
+        decimal lineTotal = d.TotalPrice ?? (d.Quantity * d.UnitPrice);
+
+        <div class="order-item">
+            <img src="@Url.Content(img)" />
+            <div class="order-item-name">@(d.Product != null ? d.Product.ProductName : "(Sản phẩm đã ngừng bán)")</div>
+            <div>x @d.Quantity</div>
+            <div class="order-item-price">@lineTotal.ToString("N0") đ</div>
+        </div>
+    }
+
+    <div class="order-foot">
+        <span>Thành tiền: <strong style="color:red;">@Model.TotalAmount.ToString("N0") đ</strong></span>
+        <span>
+            <a class="ob ob-blue" href="@Url.Action("Details", "Order", new { id = Model.OrderID })">Xem chi tiết</a>
+            <a class="ob ob-red" href="@Url.Action("ReOrder", "Order", new { id = Model.OrderID })">Mua lại</a>
+            @if (canCancel)
+            {
+                using (Html.BeginForm("CancelOrder", "Order", new { id = Model.OrderID }, FormMethod.Post,
+                       new { style = "display:inline", onsubmit = "return confirm('Bạn chắc chắn muốn hủy đơn hàng này?');" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="ob ob-gray">Hủy đơn</button>
+                }
+            }
+        </span>
+    </div>
+</div>

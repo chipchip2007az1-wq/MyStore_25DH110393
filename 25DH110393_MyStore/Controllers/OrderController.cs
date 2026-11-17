@@ -1,7 +1,9 @@
 ﻿using _25DH110393_MyStore.Models;
 using _25DH110393_MyStore.Models.VỉewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -11,9 +13,28 @@ namespace MaSV_MyStore.Controllers
     {
         private MyStoreEntities db = new MyStoreEntities();
         // GET: Order
-        public ActionResult Index()
+        public ActionResult Index(string customerName, string paymentStatus, DateTime? orderDate, int? page)
         {
-            return View();
+            var orders = db.Orders.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(customerName))
+                orders = orders.Where(o => o.Customer.CustomerName.Contains(customerName));
+
+            if (!string.IsNullOrEmpty(paymentStatus))
+                orders = orders.Where(o => o.PaymentStatus == paymentStatus);
+
+            if (orderDate.HasValue)
+            {
+                var d = orderDate.Value.Date;
+                orders = orders.Where(o => DbFunctions.TruncateTime(o.OrderDate) == d);
+            }
+
+            ViewBag.CustomerName = customerName;
+            ViewBag.PaymentStatus = paymentStatus;
+            ViewBag.OrderDate = orderDate?.ToString("yyyy-MM-dd");
+
+            int pageNumber = page ?? 1;
+            return View(orders.OrderByDescending(o => o.OrderDate).ToPagedList(pageNumber, 15));
         }
 
         // GET: Order/Checkout
